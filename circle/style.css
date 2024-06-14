@@ -14,6 +14,7 @@ body {
   width: 160px;
   height: 160px;
   position: relative;
+  margin: 20px;
 }
 .outer {
   width: 160px;
@@ -47,9 +48,23 @@ circle {
   stroke-dashoffset: 450;
   animation: anim 2s linear forwards;
 }
+circle.circle2 {
+  fill: none;
+  stroke: url(#GradientColor);
+  stroke-width: 30px;
+  stroke-dasharray: 20;
+  stroke-dashoffset: 20;
+  animation: anim2 3s linear infinite;
+}
 @keyframes anim {
   100% {
     stroke-dashoffset: 157.5;
+  }
+}
+@keyframes anim2 {
+  100% {
+    stroke-dasharray: 10;
+    stroke-dashoffset: 500;
   }
 }
 svg {
