@@ -1,0 +1,101 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: 'Lato', sans-serif;
+  background-color: rgb(230, 222, 201);
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  padding: 5px 10px;
+  justify-content: space-between;
+  position: fixed;
+  background-color: rgb(234, 232, 228);
+  width: 100%;
+  height: 3.5rem;
+}
+.header ul {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.header ul li {
+  list-style: none;
+  padding: 0 2rem;
+  font-size: 1.3rem;
+}
+.header img {
+  border-radius: 50%;
+}
+.popup {
+  opacity: 0;
+  visibility: hidden;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-color: rgb(0, 0, 0, 0.8);
+  top: 0;
+  left: 0;
+  transition: 0.3s all;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+.popup.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.popup__body {
+  min-height: 100%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 30px 10px;
+}
+.popup__close {
+  position: absolute;
+  top: 5px;
+  right: 0px;
+  color: red;
+  background: none;
+  border: none;
+  width: 50px;
+  height: 40px;
+  font-size: 1.6em;
+}
+.popup__content {
+  overflow-y: auto;
+  background-color: white;
+  max-width: 800px;
+  padding: 30px;
+  position: relative;
+}
+.popup::-webkit-scrollbar {
+  display: none; /* for Chrome, Safari, and Opera */
+}
+.popup__title {
+  color: rgb(159, 159, 212);
+  font-size: 1.6rem;
+  text-align: center;
+  margin-bottom: 20px;
+}
+.popup__text {
+  line-height: 1.5;
+}
+.content p {
+  margin: 50px;
+  padding: 20px;
+  margin-top: 25px;
+}
+.content {
+  padding-top: 3.5rem;
+}
+a {
+  text-decoration: none;
+  color: black;
+}

@@ -50,10 +50,10 @@ circle {
 }
 circle.circle2 {
   fill: none;
-  stroke: url(#GradientColor);
+  stroke: url(#GradientColor2);
   stroke-width: 30px;
-  stroke-dasharray: 20;
-  stroke-dashoffset: 20;
+  stroke-dasharray: 550;
+  stroke-dashoffset: 550;
   animation: anim2 3s linear infinite;
 }
 @keyframes anim {
@@ -63,8 +63,7 @@ circle.circle2 {
 }
 @keyframes anim2 {
   100% {
-    stroke-dasharray: 10;
-    stroke-dashoffset: 500;
+    stroke-dashoffset: 130;
   }
 }
 svg {
