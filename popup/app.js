@@ -24,10 +24,11 @@ window.addEventListener('keydown', (e) => {
   }
 })
 window.addEventListener('click', ({ target }) => {
+  console.log(target)
   const popup = target.closest('.popup')
-  const clickedOnClosedPopup = popup && !popup.classList.contains('active')
+  // const clickedOnClosedPopup = popup && !popup.classList.contains('active')
 
   popup.classList.remove('active')
 
-  if (clickedOnClosedPopup) popup.classList.add('active')
+  // if (clickedOnClosedPopup) popup.classList.add('active')
 })
