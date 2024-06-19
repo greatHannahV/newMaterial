@@ -3,6 +3,7 @@ import styled from 'styled-components'
 const StyledHeader = styled.div`
   grid-row: 1/2;
   width: 1300px;
+
   height: 4.2rem;
   margin: 0 auto;
   margin-bottom: 40px;
