@@ -57,7 +57,7 @@ body {
   padding-left: 100px;
 }
 .modalbody p::before {
-  content: '1';
+  content: 'Steps';
   width: 50px;
   height: 50px;
   border-radius: 50%;
@@ -67,10 +67,13 @@ body {
   position: absolute;
   color: #ffff;
   display: flex;
-  align-items: end;
+  align-items: center;
   justify-content: center;
   padding: 5px;
-  font-size: 50px;
+  font-size: 20px;
   font-family: inherit;
   text-align: start;
+}
+::-webkit-scrollbar {
+  display: none;
 }

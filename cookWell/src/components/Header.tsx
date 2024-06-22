@@ -1,8 +1,9 @@
 import styled from 'styled-components'
+import { useModal } from './ModalContext'
 
 const StyledHeader = styled.div`
   grid-row: 1/2;
-  width: 1300px;
+  width: 100%;
 
   height: 4.2rem;
   margin: 0 auto;
@@ -49,6 +50,7 @@ const SearchBar = styled.div`
 `
 
 function Header() {
+  const { search, setSearch } = useModal()
   return (
     <StyledHeader>
       <Logo>
@@ -60,7 +62,12 @@ function Header() {
         <i style={{ fontSize: '11px' }}> by Devexperts</i>
       </LogoText>
       <SearchBar>
-        <input type="text" placeholder="Filter ingredients" />
+        <input
+          value={search}
+          type="text"
+          placeholder="Filter ingredients"
+          onChange={(e) => setSearch(e.target.value)}
+        />
       </SearchBar>
     </StyledHeader>
   )

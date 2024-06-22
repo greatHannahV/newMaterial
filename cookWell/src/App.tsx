@@ -74,7 +74,7 @@ import Modal from './components/Modal'
 
 const WrapperStyle = styled.div`
   height: 100vh;
-  width: 100%;
+  width: 70%;
   display: grid;
   margin: 0 auto;
   grid-template-rows: minmax(auto, 4rem) 1fr minmax(100px, 200px);
@@ -85,12 +85,11 @@ const WrapperStyle = styled.div`
 
 function AppContent() {
   const [recipes, setRecipes] = useState<{ meals: Meal[] } | null>(null)
-  const { active, recipe } = useModal()
-
-  async function getRecipe() {
+  const { active, recipe, search } = useModal()
+  async function searchRecipe(name: string) {
     try {
       const response = await fetch(
-        'https://www.themealdb.com/api/json/v1/1/search.php?s=soup',
+        `https://www.themealdb.com/api/json/v1/1/search.php?s=${name}`,
       )
       if (!response.ok) {
         throw new Error(`Error! status: ${response.status}`)
@@ -99,13 +98,28 @@ function AppContent() {
       setRecipes(result)
       console.log(result)
     } catch (error) {
-      console.error('There was a problem with the fetch operation:', error)
+      console.error('No information about the meal:', error)
     }
   }
+  // async function getRecipe() {
+  //   try {
+  //     const response = await fetch(
+  //       'https://www.themealdb.com/api/json/v1/1/random.php',
+  //     )
+  //     if (!response.ok) {
+  //       throw new Error(`Error! status: ${response.status}`)
+  //     }
+  //     const result = await response.json()
+  //     setRecipes(result)
+  //     console.log(result)
+  //   } catch (error) {
+  //     console.error('There was a problem with the fetch operation:', error)
+  //   }
+  // }
 
   useEffect(() => {
-    getRecipe()
-  }, [])
+    searchRecipe(search)
+  }, [search])
 
   return (
     <WrapperStyle>
@@ -117,6 +131,7 @@ function AppContent() {
           <p>Nothing was found</p>
         )}
       </div>
+
       <Footer />
       {active && <Modal recipe={recipe} />}
     </WrapperStyle>

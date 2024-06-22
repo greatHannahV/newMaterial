@@ -41,13 +41,19 @@ import { Meal } from '../types'
 
 const StyledRecipes = styled.div`
   margin: 0 auto;
-  width: 1300px;
+  width: 100%;
   height: 100%;
   grid-row: 2/3;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   column-gap: 25px;
   justify-content: space-between;
+`
+const StyleNot = styled.p`
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `
 
 interface RecipesProps {
@@ -57,9 +63,11 @@ interface RecipesProps {
 const Recipes: React.FC<RecipesProps> = ({ recipes }) => {
   return (
     <StyledRecipes>
-      {recipes.map((meal) => (
-        <Recipe key={meal.idMeal} recipe={meal} />
-      ))}
+      {recipes ? (
+        recipes.map((meal) => <Recipe key={meal.idMeal} recipe={meal} />)
+      ) : (
+        <StyleNot>Nothing has been found</StyleNot>
+      )}
     </StyledRecipes>
   )
 }

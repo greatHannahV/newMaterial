@@ -6,6 +6,8 @@ interface ModalContextType {
   setActive: React.Dispatch<React.SetStateAction<boolean>>
   recipe: Meal | null
   setRecipe: React.Dispatch<React.SetStateAction<Meal | null>>
+  search: string
+  setSearch: React.Dispatch<React.SetStateAction<string>>
 }
 
 const ModalContext = createContext<ModalContextType | undefined>(undefined)
@@ -17,9 +19,20 @@ interface ModalProviderProps {
 export const ModalProvider: React.FC<ModalProviderProps> = ({ children }) => {
   const [active, setActive] = useState<boolean>(false)
   const [recipe, setRecipe] = useState<Meal | null>(null)
+  const [search, setSearch] = useState<string>('')
 
   return (
-    <ModalContext.Provider value={{ active, setActive, recipe, setRecipe }}>
+    <ModalContext.Provider
+      value={{
+        search,
+
+        setSearch,
+        active,
+        setActive,
+        recipe,
+        setRecipe,
+      }}
+    >
       {children}
     </ModalContext.Provider>
   )
