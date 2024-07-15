@@ -94,16 +94,18 @@ interface ModalProps {
 
 const Modal: React.FC<ModalProps> = () => {
   const { setActive, active, recipe } = useModal()
+  const closeModal = () => {
+    setActive(!active)
+  }
 
   if (!recipe) return null
-
   return (
-    <ModalStyle className="modal active">
-      <ModalContent>
+    <ModalStyle className="modal active ">
+      <ModalContent className="modal__content">
         <ModalBody className="modalbody">
           <p>{recipe?.strInstructions}</p>
         </ModalBody>
-        <ModalButton onClick={() => setActive(!active)}>X</ModalButton>
+        <ModalButton onClick={() => closeModal()}>X</ModalButton>
       </ModalContent>
     </ModalStyle>
   )

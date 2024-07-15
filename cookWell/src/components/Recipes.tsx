@@ -45,9 +45,8 @@ const StyledRecipes = styled.div`
   height: 100%;
   grid-row: 2/3;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  column-gap: 25px;
-  justify-content: space-between;
+  grid-template-columns: repeat(auto-fit, 350px);
+  column-gap: 30px;
 `
 const StyleNot = styled.p`
   margin: 0 auto;

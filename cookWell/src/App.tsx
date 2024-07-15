@@ -89,37 +89,39 @@ function AppContent() {
   async function searchRecipe(name: string) {
     try {
       const response = await fetch(
-        `https://www.themealdb.com/api/json/v1/1/search.php?s=${name}`,
+        `https://www.themealdb.com/api/json/v1/1/filter.php?i=${name}`,
       )
       if (!response.ok) {
         throw new Error(`Error! status: ${response.status}`)
       }
       const result = await response.json()
       setRecipes(result)
-      console.log(result)
     } catch (error) {
       console.error('No information about the meal:', error)
     }
   }
-  // async function getRecipe() {
-  //   try {
-  //     const response = await fetch(
-  //       'https://www.themealdb.com/api/json/v1/1/random.php',
-  //     )
-  //     if (!response.ok) {
-  //       throw new Error(`Error! status: ${response.status}`)
-  //     }
-  //     const result = await response.json()
-  //     setRecipes(result)
-  //     console.log(result)
-  //   } catch (error) {
-  //     console.error('There was a problem with the fetch operation:', error)
-  //   }
-  // }
+  async function getRecipe() {
+    try {
+      const response = await fetch(
+        'https://www.themealdb.com/api/json/v1/1/random.php',
+      )
+      if (!response.ok) {
+        throw new Error(`Error! status: ${response.status}`)
+      }
+      const result = await response.json()
+      setRecipes(result)
+    } catch (error) {
+      console.error('There was a problem with the fetch operation:', error)
+    }
+  }
 
   useEffect(() => {
-    searchRecipe(search)
-  }, [search])
+    if (search) {
+      searchRecipe(search)
+    } else {
+      getRecipe()
+    }
+  }, [search, recipe])
 
   return (
     <WrapperStyle>
